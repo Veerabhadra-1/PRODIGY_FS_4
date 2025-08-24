@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Room</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Nickname Modal -->
+    <div id="nickname-modal" class="modal">
+        <div class="modal-content">
+            <h2>Welcome to Chat Room! 💬</h2>
+            <p>Please enter your nickname to join:</p>
+            <form id="nickname-form">
+                <input type="text" id="nickname-input" placeholder="Enter your nickname" maxlength="20" required>
+                <button type="submit">Join Chat</button>
+            </form>
+            <div id="nickname-error" class="error-message"></div>
+        </div>
+    </div>
+
+    <!-- Main Chat Interface -->
+    <div id="chat-interface" class="chat-interface" style="display: none;">
+        <div class="header">
+            <h1>💬 Chat Room</h1>
+            <div class="header-controls">
+                <span class="online-count" id="online-count">0 online</span>
+                <button class="theme-toggle" id="theme-toggle">
+                    <span class="icon" id="theme-icon">🌙</span>
+                    <span id="theme-text">Dark Mode</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- Online Users Sidebar -->
+            <div class="sidebar">
+                <h3>👥 Online Users</h3>
+                <div class="online-users" id="online-users">
+                    <!-- Online users will be populated here -->
+                </div>
+            </div>
+
+            <!-- Chat Area -->
+            <div class="chat-area">
+                <div class="messages-container">
+                    <ul id="messages"></ul>
+                    <div id="typing-indicator" class="typing-indicator" style="display: none;">
+                        <span id="typing-text"></span>
+                    </div>
+                </div>
+
+                <form action="" id="form">
+                    <div class="input-container">
+                        <input id="input" autocomplete="off" placeholder="Type your message...">
+                        <div class="message-controls">
+                            <select id="message-type">
+                                <option value="public">Public</option>
+                                <option value="private">Private</option>
+                            </select>
+                            <select id="private-recipient" style="display: none;">
+                                <option value="">Select user...</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
